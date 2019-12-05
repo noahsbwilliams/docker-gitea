@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    restart: always
+    networks:
+      - internal
+    volumes:
+      - ./:
