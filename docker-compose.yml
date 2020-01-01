@@ -19,8 +19,8 @@ services:
       - DB_USER=${MYSQL_USER}
       - DB_PASSWD=${MYSQL_PASSWORD}
     ports:
-      - 3000:3000
-      - 2000:22
+      - '3000:3000'
+      - '2000:22'
   mysql:
     image: mysql:latest
     restart: always
