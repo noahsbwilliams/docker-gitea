@@ -2,9 +2,36 @@ version: '3.7'
 
 services:
   gitea:
+    depends_on:
+      - mysql
     image: gitea/gitea:latest
     restart: always
     networks:
-      - internal
+      - db_net
     volumes:
-      - ./:
+      - ./data/gitea:/data
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DB_TYPE=mysql
+      - DB_HOST=db_net:3306
+      - DB_NAME=gitea
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWD=${MYSQL_PASSWORD}
+    ports:
+      - 3000:3000
+      - 2000:22
+  mysql:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    networks:
+      - db_net
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE='gitea'
+networks:
+  db_net:
