@@ -5,12 +5,12 @@ services:
     image: gitea/gitea:latest
     restart: always
     volumes:
-      - ./data/gitea:/data
+      - /home/git/gitea:/data
     environment:
       USER_UID: '1000'
       USER_GID: '1000'
       DB_TYPE: sqlite3
       DB_NAME: gitea
     ports:
-      - '3000:3000'
-      - '2000:22'
+      - '127.0.0.1:3000:3000'
+      - '22:22'
