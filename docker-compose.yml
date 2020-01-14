@@ -5,12 +5,27 @@ services:
     image: gitea/gitea:latest
     restart: always
     volumes:
-      - /home/git/gitea:/data
+      - ./data:/data
     environment:
       USER_UID: '1000'
       USER_GID: '1000'
       DB_TYPE: sqlite3
       DB_NAME: gitea
+      RUN_MODE: prod
+      ROOT_URL: http://localhost/
+      APP_NAME: Local Gitea
     ports:
-      - '127.0.0.1:3000:3000'
-      - '22:22'
+      - '222:22'
+    networks:
+      - internal
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - internal
+    ports:
+      - '8080:80'
+networks:
+  internal:
