@@ -12,8 +12,8 @@ services:
       DB_TYPE: sqlite3
       DB_NAME: gitea
       RUN_MODE: prod
-      ROOT_URL: http://localhost/
-      APP_NAME: Local Gitea
+      ROOT_URL: https://code.rothanaheavyengineering.com/
+      APP_NAME: Rothana Heavy Engineering
     ports:
       - '222:22'
     networks:
@@ -26,6 +26,7 @@ services:
     networks:
       - internal
     ports:
-      - '8080:80'
+      - '80:80'
+      - '443:443'
 networks:
   internal:
