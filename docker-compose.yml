@@ -22,7 +22,7 @@ services:
     image: nginx:latest
     restart: always
     volumes:
-      - ./nginx:/etc/nginx/conf.d
+      - ./nginx:/etc/nginx
     networks:
       - internal
     ports:
