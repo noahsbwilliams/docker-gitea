@@ -12,9 +12,9 @@ services:
       DB_TYPE: sqlite3
       DB_NAME: gitea
       RUN_MODE: prod
-      ROOT_URL: https://code.rothanaheavyengineering.com/
-      SSH_DOMAIN: code.rothanaheavyengineering.com
-      APP_NAME: Rothana Heavy Engineering
+      ROOT_URL: https://code.example.com/
+      SSH_DOMAIN: code.example.com
+      APP_NAME: 'Gitea: Git with a cup of tea'
     ports:
       - '22:22'
     networks:

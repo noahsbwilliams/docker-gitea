@@ -14,9 +14,9 @@ docker run -it --rm --name certbot \
   -p 80:80 \
   certbot/certbot -t certonly \
   --standalone \
-  --email public@noahsbwilliams.com \
+  --email email@example.com \
   --no-eff-email \
   --agree-tos --renew-by-default \
-  -d code.rothanaheavyengineering.com;
+  -d code.example.com;
 
 docker-compose up -d
